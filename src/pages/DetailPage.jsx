@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import Review from '../components/Review';
 
 function DetailPage() {
-    const { id } = useParams(); // Prende l'ID dall'URL (es: /film/5)
+    const { id } = useParams();
     const [film, setFilm] = useState(null);
 
     useEffect(() => {
@@ -24,13 +25,13 @@ function DetailPage() {
                 </div>
                 <div className="col-md-4">
                     <div className="card bg-light p-3">
-                        <h3>Recensioni</h3>
+                        <div className="d-flex justify-content-between align-items-center mb-3">
+                            <h3 className="m-0">Recensioni</h3>
+                            <Link to={`/film/${id}/recensione`} className="btn btn-sm btn-primary">Aggiungi</Link>
+                        </div>
                         {film.reviews && film.reviews.length > 0 ? (
                             film.reviews.map(rev => (
-                                <div key={rev.id} className="border-bottom py-2">
-                                    <strong>{rev.author}</strong>
-                                    <p className="mb-0 text-muted">{rev.content}</p>
-                                </div>
+                                <Review key={rev.id} review={rev} />
                             ))
                         ) : (
                             <p>Nessuna recensione presente.</p>
