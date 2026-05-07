@@ -22,13 +22,13 @@ const HomePage = () => {
 
     return (
         <div className="container">
-            <header className="py-5 text-center">
-                <h1 className="display-4 font-weight-bold">Benvenuti al Cinema React</h1>
-                <p className="lead text-muted">Esplora i film e leggi le recensioni dei nostri utenti.</p>
+            <header className="py-5 text-center bg-primary text-white rounded-4 shadow-sm mb-5 mt-3" style={{ background: 'linear-gradient(45deg, #0d6efd, #6610f2)' }}>
+                <h1 className="display-4 fw-bold">Benvenuti al Cinema React</h1>
+                <p className="lead">Esplora i film e leggi le recensioni dei nostri utenti.</p>
             </header>
 
             {films.length === 0 ? (
-                <div className="text-center">Il catalogo è attualmente vuoto.</div>
+                <div className="text-center text-muted fs-5">Il catalogo è attualmente vuoto.</div>
             ) : (
                 <div className="row">
                     {films.map(film => (
